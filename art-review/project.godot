@@ -1,0 +1,10 @@
+config_version=5
+[application]
+config/name="小小金錢獸・雪市集"
+run/main_scene="res://Market.tscn"
+[display]
+window/size/viewport_width=1024
+window/size/viewport_height=780
+window/stretch/mode="canvas_items"
+[rendering]
+renderer/rendering_method="gl_compatibility"
