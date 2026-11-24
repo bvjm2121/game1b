@@ -1,25 +1,189 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>礦坑夢想家｜小小理財冒險</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Noto+Sans+TC:wght@500;700;900&display=swap');
-:root{--ink:#163043;--cream:#fff9dc;--gold:#ffc83d;--orange:#f27c38;--teal:#147a78;--mine:#12374c;--green:#72bb62}*{box-sizing:border-box}body{margin:0;background:#102f42;color:var(--ink);font-family:'Noto Sans TC',sans-serif;min-height:100vh}.game{max-width:1180px;margin:auto;min-height:100vh;background:var(--cream);overflow:hidden;position:relative}.top{height:76px;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;background:#fff5c2;border-bottom:4px solid #e4b63f}.brand{font:700 25px Fredoka,'Noto Sans TC';color:#174155;letter-spacing:.5px}.brand span{color:#e66e32}.stats{display:flex;gap:9px;flex-wrap:wrap}.stat{background:white;border:2px solid #ecd07a;border-radius:13px;padding:7px 12px;font-weight:700;font-size:14px;box-shadow:0 2px 0 #dfbd5a}.layout{padding:20px;display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:19px}.mapwrap{position:relative;border:6px solid #25475a;border-radius:20px;background:#71c5df;overflow:hidden;box-shadow:inset 0 0 0 4px #b9eaf4;min-height:560px}.map{height:560px;position:relative;background:linear-gradient(#82d4e9 0 31%,#72be64 31% 58%,#5d944f 58%);overflow:hidden}.cloud{position:absolute;color:#e8fbff;font-size:60px;opacity:.86}.mountain{position:absolute;bottom:245px;width:0;height:0;border-left:170px solid transparent;border-right:170px solid transparent;border-bottom:240px solid #47657a;filter:drop-shadow(15px 12px #315365)}.m1{left:-50px}.m2{right:-65px;transform:scale(.76);bottom:260px}.ground{position:absolute;bottom:0;width:100%;height:44%;background:repeating-linear-gradient(132deg,#9e6a38 0 24px,#86542d 25px 29px);border-top:8px solid #d7a556}.track{position:absolute;bottom:77px;left:3%;right:3%;height:17px;background:repeating-linear-gradient(90deg,#503a31 0 15px,#d7b075 16px 37px);transform:rotate(-3deg);border-radius:10px}.path{position:absolute;left:10%;right:10%;top:40%;height:70px;background:#e1c270;border:5px dashed #fff1ac;border-radius:40px;transform:rotate(-3deg)}.node{position:absolute;width:78px;height:78px;border-radius:50%;display:grid;place-items:center;font-size:34px;border:5px solid #fff8d7;box-shadow:0 5px 0 rgba(34,61,63,.35);cursor:pointer;transition:.2s;z-index:2}.node:hover{transform:scale(1.08)}.node.done{border-color:#8cda7d}.node.lock{filter:grayscale(.75);cursor:not-allowed}.n0{left:7%;top:48%;background:#3f9b86}.n1{left:27%;top:35%;background:#f7a944}.n2{left:48%;top:47%;background:#f17d54}.n3{left:67%;top:29%;background:#8c77ca}.n4{right:6%;top:44%;background:#f3c63d}.miner{position:absolute;z-index:3;font-size:52px;left:9%;top:57%;filter:drop-shadow(2px 4px #264c56);transition:left .6s,top .6s}.sign{position:absolute;bottom:23px;left:22px;background:#fff6cb;border:4px solid #7c4a2d;border-radius:9px;padding:8px 11px;font-weight:900;font-size:13px;transform:rotate(-2deg)}.sidebar{display:flex;flex-direction:column;gap:14px}.card{background:white;border:3px solid #efcf71;border-radius:18px;padding:16px;box-shadow:0 4px 0 #dfb94d}.card h2{font:700 20px Fredoka,'Noto Sans TC';margin:0 0 8px;color:#1f5364}.goalpic{font-size:53px;float:right;margin:-7px 0 0 8px}.progress{height:13px;border-radius:20px;background:#e7edf0;overflow:hidden;margin:11px 0 5px}.progress i{display:block;height:100%;background:linear-gradient(90deg,#f6a63d,#ffd95d);border-radius:inherit}.tip{background:#e5f5e0;border-color:#89c97a;font-size:14px;line-height:1.6}.tip b{color:#397b46}.btn{border:0;border-bottom:4px solid #a64e27;background:var(--orange);color:white;border-radius:13px;padding:12px 17px;font:700 16px 'Noto Sans TC';cursor:pointer;width:100%;margin-top:10px}.btn:hover{filter:brightness(1.08)}.btn.alt{background:#19847e;border-bottom-color:#0c5658}.overlay{position:fixed;inset:0;background:rgba(7,29,42,.7);display:grid;place-items:center;padding:16px;z-index:10}.modal{max-width:690px;width:100%;max-height:90vh;overflow:auto;background:#fffbea;border:7px solid #315564;border-radius:24px;padding:27px;box-shadow:0 15px 0 rgba(0,0,0,.25);text-align:center}.modal h1{font:700 32px Fredoka,'Noto Sans TC';margin:0 0 8px;color:#16465a}.modal p{line-height:1.75;font-size:16px}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:20px 0}.choice{background:white;border:3px solid #ead58a;border-radius:17px;padding:15px 8px;cursor:pointer;font-weight:900;font-size:16px}.choice:hover{border-color:#f0833c;transform:translateY(-3px)}.choice .emoji{display:block;font-size:48px;margin-bottom:7px}.dialogue{background:#dff4fb;border:3px solid #78bad0;border-radius:15px;padding:14px;text-align:left;margin:15px 0;font-size:16px;line-height:1.65}.dialogue b{color:#04726f}.adgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px;text-align:left}.ad{padding:15px;border-radius:14px;border:3px solid #e0d39a;background:white;cursor:pointer;min-height:140px}.ad:hover{border-color:#e56f38}.ad.selected{background:#fff0df;border-color:#e76930}.ad h3{margin:0 0 7px;font-size:17px}.ad p{font-size:14px;margin:0;color:#405564}.clue{display:none;background:#ffe1ad;padding:10px;border-radius:10px;margin-top:9px;font-size:13px;font-weight:bold}.ad.selected .clue{display:block}.badges{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin:18px 0}.badge{background:white;border:3px solid #ebcd71;border-radius:16px;padding:14px;width:190px}.badge .seal{font-size:47px}.hidden{display:none}@media(max-width:760px){.top{height:auto;align-items:flex-start}.brand{font-size:19px}.layout{grid-template-columns:1fr;padding:10px}.mapwrap,.map{min-height:450px;height:450px}.sidebar{display:grid;grid-template-columns:1fr 1fr}.choices{grid-template-columns:1fr}.adgrid{grid-template-columns:1fr}.modal{padding:19px}.node{width:62px;height:62px;font-size:28px}.miner{font-size:42px}.stat{font-size:12px;padding:5px 7px}}@media(max-width:450px){.sidebar{display:block}.sidebar .card{margin-bottom:10px}.stats{justify-content:flex-end}.top{padding:8px}.brand{max-width:130px}.n3{top:23%}}
-</style></head>
-<body><main class="game"><header class="top"><div class="brand">⛏️ 礦坑<span>夢想家</span></div><div class="stats"><div class="stat">🪙 金幣 <span id="money">100</span></div><div class="stat">💡 防詐線索 <span id="clues">0</span>/4</div><div class="stat">📍 第 <span id="step">0</span>/4 關</div></div></header>
-<div class="layout"><section class="mapwrap"><div class="map"><span class="cloud" style="left:12%;top:2%">☁</span><span class="cloud" style="right:8%;top:12%;font-size:44px">☁</span><div class="mountain m1"></div><div class="mountain m2"></div><div class="path"></div><div class="ground"></div><div class="track"></div><button class="node n0" data-stage="0" title="起點">🏠</button><button class="node n1 lock" data-stage="1" title="零用錢礦脈">💰</button><button class="node n2 lock" data-stage="2" title="理財偵探局">🔎</button><button class="node n3 lock" data-stage="3" title="投資岔路">📈</button><button class="node n4 lock" data-stage="4" title="夢想終點">🏆</button><div class="miner" id="miner">👷</div><div class="sign">點亮路線，挖出你的夢想！</div></div></section>
-<aside class="sidebar"><div class="card"><div class="goalpic" id="goalEmoji">🎒</div><h2>我的夢想</h2><b id="goalName">尚未選擇</b><div class="progress"><i id="bar" style="width:0%"></i></div><small>存款：<b id="saved">0</b> / <span id="target">—</span> 金幣</small></div><div class="card tip"><b>礦坑小提醒</b><br>存錢不是把錢藏起來，而是先想清楚「我想完成什麼」！</div><div class="card"><h2>冒險指南</h2><small>依序點擊地圖上的發亮地點。每一關都有選擇與事件卡。</small><button class="btn alt" id="restart">重新開始</button></div></aside></div></main>
-<div class="overlay" id="intro"><div class="modal"><div style="font-size:65px">⛏️✨</div><h1>歡迎來到夢想礦坑！</h1><p>你是一位小小礦工，要用聰明的理財決定，挖出自己想完成的夢想。<br>先選一個最想買的物品吧！</p><div class="choices" id="goalChoices"></div><p style="font-size:13px;color:#62717b">遊戲中沒有「賺最多」才是贏家；完成目標、守住荷包也很厲害。</p></div></div>
-<div class="overlay hidden" id="event"><div class="modal" id="eventContent"></div></div>
-<script>
-const goals=[{name:'探險背包',emoji:'🎒',cost:160},{name:'生日禮物',emoji:'🎁',cost:220},{name:'腳踏車基金',emoji:'🚲',cost:280}];let state={goal:null,money:100,saved:0,stage:0,clues:0,detective:false};
-const $=id=>document.getElementById(id);function save(){try{localStorage.mineDream=JSON.stringify(state)}catch(e){}}function update(){ $('money').textContent=state.money;$('clues').textContent=state.clues;$('step').textContent=state.stage;$('saved').textContent=state.saved;if(state.goal){$('goalName').textContent=state.goal.name;$('goalEmoji').textContent=state.goal.emoji;$('target').textContent=state.goal.cost;$('bar').style.width=Math.min(100,state.saved/state.goal.cost*100)+'%'}document.querySelectorAll('.node').forEach(n=>{let v=+n.dataset.stage;n.classList.toggle('lock',v>state.stage);n.classList.toggle('done',v<state.stage)});let poses=[['9%','57%'],['29%','44%'],['50%','56%'],['69%','38%'],['84%','53%']];$('miner').style.left=poses[state.stage][0];$('miner').style.top=poses[state.stage][1];save()}
-function chooseGoal(g){state.goal=g;state.stage=1;$('intro').classList.add('hidden');update();showStart()};function show(html){$('eventContent').innerHTML=html;$('event').classList.remove('hidden')}function dismissEvent(){ $('event').classList.add('hidden');update() }
-function showStart(){show(`<div style="font-size:55px">👷‍♀️</div><h1>出發囉，小小礦工！</h1><div class="dialogue"><b>礦坑嚮導阿金：</b>「你的目標是 <strong>${state.goal.name}</strong>，需要 ${state.goal.cost} 金幣。記得：每一枚金幣都要有任務！」</div><p>點地圖上的 💰，開始你的第一個理財決定。</p><button class="btn" onclick="dismissEvent()">我要出發！</button>`) }
-function stage1(){show(`<div style="font-size:56px">💰</div><h1>零用錢礦脈</h1><div class="dialogue"><b>阿金：</b>「你拿到 60 金幣零用錢。你想怎麼做？」</div><div class="choices"><button class="choice" onclick="decision(40,'你先把 40 金幣放進夢想罐，真有方向！')"><span class="emoji">🐷</span>先存 40<br><small>目標優先</small></button><button class="choice" onclick="decision(15,'買點心也可以，但你記得先留一部分給夢想。')"><span class="emoji">🍪</span>買點心再存 15<br><small>享受也要有界線</small></button><button class="choice" onclick="decision(0,'全部花掉了。沒關係，下一次可試試先存再花！')"><span class="emoji">🎮</span>全部花掉<br><small>下次再說</small></button></div>`) }function decision(n,msg){state.saved+=n;state.money+=60-n;state.stage=2;show(`<div style="font-size:55px">⛏️</div><h1>你做了選擇！</h1><p>${msg}</p><div class="dialogue"><b>理財小筆記：</b>把錢分成「想存的」和「可以花的」，不是不能買，而是讓自己有選擇權。</div><button class="btn" onclick="dismissEvent()">前往理財偵探局</button>`)}
-function stage2(){show(`<div style="font-size:55px">🔎</div><h1>理財偵探任務</h1><p>市場裡出現一些投資廣告。<b>點出你覺得可疑的廣告</b>，再交出偵查報告！</p><div class="adgrid"><div class="ad" onclick="this.classList.toggle('selected')"><h3>🌟 穩穩成長存錢罐</h3><p>每月存一點，慢慢完成夢想；可查看規則與費用。</p><div class="clue">這則有清楚說明，暫時沒有詐騙紅旗。</div></div><div class="ad" data-bad="1" onclick="this.classList.toggle('selected')"><h3>🚀 一週翻倍計畫</h3><p>保證 100% 獲利！錯過今天就沒機會。</p><div class="clue">⚠️ 「保證獲利」＋催你馬上決定，是重要紅旗！</div></div><div class="ad" data-bad="1" onclick="this.classList.toggle('selected')"><h3>💎 神秘礦石內線</h3><p>完全沒有風險，先匯款才能加入，資金用途保密。</p><div class="clue">⚠️ 無風險、急著匯款、不說用途，全都很可疑！</div></div><div class="ad" onclick="this.classList.toggle('selected')"><h3>🏦 銀行小小儲蓄帳戶</h3><p>由家長陪同開戶，利息和限制都公開說明。</p><div class="clue">資訊透明，也可以請大人一起查證。</div></div></div><button class="btn" onclick="checkAds()">交出偵查報告</button>`) }function checkAds(){let sels=[...document.querySelectorAll('.ad.selected')];let bad=sels.filter(x=>x.dataset.bad).length,good=sels.filter(x=>!x.dataset.bad).length;if(bad===2&&good===0){state.clues=4;state.detective=true;state.stage=3;show(`<div style="font-size:60px">🕵️‍♀️</div><h1>偵查成功！</h1><p>你找出了所有可疑廣告，得到 4 枚防詐線索！</p><div class="dialogue"><b>防詐口訣：</b>保證獲利先懷疑；催我匯款先停下；用途不明要查證。遇到投資資訊，記得找家長或可信任的大人一起確認。</div><button class="btn" onclick="dismissEvent()">前往投資岔路</button>`)}else{show(`<div style="font-size:50px">🧐</div><h1>再想一想！</h1><p>可疑訊息通常會「保證賺錢、說沒風險、催你匯款，或不講錢要做什麼」。回去看看廣告吧。</p><button class="btn" onclick="stage2()">回到廣告牆</button>`)}}
-function stage3(){show(`<div style="font-size:58px">📈</div><h1>投資岔路</h1><div class="dialogue"><b>阿金：</b>「有人說：把所有金幣都放同一個神秘礦坑，明天保證變兩倍！」</div><p>你會怎麼做？</p><div class="choices"><button class="choice" onclick="invest('safe')"><span class="emoji">🧺</span>分配存錢與日常花費<br><small>先問清楚再決定</small></button><button class="choice" onclick="invest('risk')"><span class="emoji">🎲</span>全部押進去<br><small>聽說會翻倍</small></button><button class="choice" onclick="invest('ask')"><span class="emoji">🧑‍🧑‍🧒</span>先和大人討論<br><small>多一個人查證</small></button></div>`) }function invest(t){let n=t==='safe'?70:t==='ask'?55:10;state.saved+=n;state.money+=n;state.stage=4;let msg=t==='risk'?'幸好阿金提醒你，神秘礦坑沒有透明資訊，先不投入才安全！':t==='safe'?'你把錢分配得很有想法，穩穩把金幣放進夢想罐。':'你願意先討論與查證，這是很成熟的投資習慣！';show(`<div style="font-size:58px">🧭</div><h1>安全通過岔路！</h1><p>${msg}</p><p>你得到 <b>${n} 金幣</b> 的夢想進度。</p><button class="btn" onclick="dismissEvent()">前往夢想終點</button>`)}
-function stage4(){let need=Math.max(0,state.goal.cost-state.saved);let possible=state.money>=need;if(possible)state.saved+=need;show(`<div style="font-size:62px">🏆</div><h1>${possible?'夢想達成！':'終點前的整理'}</h1><p>${possible?`你從錢包拿出 ${need} 金幣，完成了「${state.goal.name}」！`:`還差 ${need} 金幣才能達成目標，但你已經學會怎麼規劃下一次零用錢了。`}</p><div class="badges">${possible?'<div class="badge"><div class="seal">🏅</div><b>夢想規劃師</b><br><small>完成儲蓄目標</small></div>':''}${state.detective?'<div class="badge"><div class="seal">🛡️</div><b>防詐偵探</b><br><small>找出可疑投資訊息</small></div>':''}</div><div class="dialogue"><b>阿金的結語：</b>「真正厲害的投資，是先保護好自己，再一步一步讓夢想發亮。」</div><button class="btn" onclick="restart()">再玩一次</button>`) ;update()}
-function play(i){if(i!==state.stage||!state.goal)return;if(i===0)showStart();if(i===1)stage1();if(i===2)stage2();if(i===3)stage3();if(i===4)stage4()}document.querySelectorAll('.node').forEach(n=>n.onclick=()=>play(+n.dataset.stage));function restart(){state={goal:null,money:100,saved:0,stage:0,clues:0,detective:false};$('event').classList.add('hidden');$('intro').classList.remove('hidden');renderGoals();update()}function renderGoals(){$('goalChoices').innerHTML=goals.map((g,i)=>`<button class="choice" onclick="chooseGoal(goals[${i}])"><span class="emoji">${g.emoji}</span>${g.name}<br><small>${g.cost} 金幣</small></button>`).join('')} $('restart').onclick=restart;renderGoals();update();
-</script></body></html>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07182f">
+  <title>小小金錢獸｜理財投資闖關</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    :root { --navy:#07182f; --blue:#102f5d; --ice:#bdeeff; --gold:#ffc84d; --gold-deep:#d88d10; --violet:#7c65c8; --mint:#74e1bd; --ink:#10233d; --card:rgba(11,33,69,.89); --line:rgba(190,235,255,.22); }
+    * { box-sizing:border-box; }
+    html { min-height:100%; background:var(--navy); }
+    body { min-height:100vh; margin:0; color:#f5fbff; font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; background:radial-gradient(circle at 18% 8%,#3d82ad 0,rgba(61,130,173,0) 30%),radial-gradient(circle at 84% 20%,#394786 0,rgba(57,71,134,0) 28%),linear-gradient(160deg,#0b2850 0%,#07182f 55%,#071426 100%); overflow-x:hidden; }
+    body::before, body::after { content:""; position:fixed; inset:0; pointer-events:none; z-index:-1; }
+    body::before { opacity:.65; background-image:radial-gradient(circle,#fff 0 1.2px,transparent 1.7px),radial-gradient(circle,#dff7ff 0 1px,transparent 1.6px); background-size:93px 107px,47px 59px; background-position:12px 8px,28px 30px; animation:snow 12s linear infinite; }
+    body::after { background:linear-gradient(180deg,transparent 62%,rgba(190,236,255,.17) 100%); }
+    @keyframes snow { to { background-position:12px 115px,28px 89px; } }
+    button { font:inherit; }
+    .app { width:min(1180px,calc(100% - 32px)); margin:auto; padding:22px 0 48px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:14px; padding:0 0 18px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.06em; color:var(--gold); }
+    .coin { display:grid; place-items:center; width:34px; height:34px; border-radius:50%; background:linear-gradient(135deg,#ffe995,#ed9e1d); color:#734400; border:2px solid #fff1a8; box-shadow:0 0 18px rgba(255,198,70,.55); }
+    .scoreboard { display:flex; gap:9px; flex-wrap:wrap; justify-content:flex-end; }
+    .stat { padding:7px 11px; min-width:95px; border:1px solid var(--line); border-radius:13px; background:rgba(3,19,42,.62); text-align:center; font-size:.82rem; color:#c7eaff; }
+    .stat strong { display:block; color:#fff; font-size:1.08rem; }
+    .scene { position:relative; min-height:420px; overflow:hidden; border:1px solid rgba(181,231,255,.3); border-radius:28px; background:linear-gradient(175deg,rgba(148,218,247,.28),rgba(8,25,56,.4) 55%,rgba(179,232,255,.18)); box-shadow:0 28px 70px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.18); }
+    .scene::before { content:""; position:absolute; width:850px; height:240px; left:-120px; bottom:-145px; border-radius:50%; background:#b7e7f3; opacity:.5; transform:rotate(-4deg); box-shadow:440px -20px 0 -34px rgba(152,215,238,.57),790px 30px 0 -75px rgba(205,244,255,.52); }
+    .scene::after { content:""; position:absolute; inset:auto -60px -80px auto; width:420px; height:420px; border-radius:50%; border:34px solid rgba(255,207,77,.86); filter:drop-shadow(0 0 18px rgba(255,196,52,.5)); transform:rotate(18deg); }
+    .banner { position:absolute; top:28px; left:5%; width:124px; min-height:174px; padding:16px 10px; clip-path:polygon(0 0,100% 0,92% 100%,50% 87%,8% 100%); background:repeating-linear-gradient(135deg,#6d2e54 0 16px,#d6b363 16px 32px); color:#fff0af; text-align:center; font-weight:900; letter-spacing:.08em; text-shadow:0 2px 2px #411a30; z-index:2; box-shadow:0 5px 0 #3c2345; }
+    .banner small { display:block; margin-bottom:9px; font-size:.64rem; }
+    .banner span { font-size:1.1rem; display:block; }
+    .intro { position:absolute; top:58px; left:calc(5% + 154px); width:min(470px,45vw); z-index:3; }
+    .eyebrow { color:var(--gold); font-weight:900; letter-spacing:.13em; font-size:.82rem; }
+    h1 { margin:.35rem 0 .6rem; max-width:500px; font-size:clamp(2.2rem,5vw,4rem); line-height:1.05; letter-spacing:.04em; text-shadow:0 4px 0 rgba(3,19,42,.33); }
+    .intro p { margin:0; max-width:410px; color:#d4f0ff; font-size:1rem; line-height:1.7; }
+    .mission-pill { display:inline-flex; gap:8px; align-items:center; margin-top:16px; padding:9px 13px; background:rgba(0,16,37,.65); border:1px solid var(--line); border-radius:999px; color:#d8f5ff; font-weight:700; font-size:.9rem; }
+    model-viewer { position:absolute; right:3%; bottom:-33px; width:min(450px,44vw); height:410px; z-index:5; --poster-color:transparent; filter:drop-shadow(0 24px 22px rgba(0,0,0,.35)); }
+    .key-float { position:absolute; right:39%; bottom:79px; z-index:6; display:none; font-size:3rem; filter:drop-shadow(0 0 15px rgba(102,237,255,.9)); animation:float 1.8s ease-in-out infinite; }
+    @keyframes float { 50% { transform:translateY(-12px) rotate(8deg); } }
+    .progress { position:relative; display:flex; gap:9px; margin:22px 0; padding:14px; border:1px solid var(--line); border-radius:17px; background:rgba(6,26,57,.72); }
+    .step { flex:1; display:flex; gap:10px; align-items:center; min-width:0; color:#9ec9df; font-size:.88rem; font-weight:700; }
+    .step i { display:grid; flex:0 0 28px; place-items:center; width:28px; height:28px; border-radius:50%; background:#1b416f; color:#b8e6f7; font-style:normal; }
+    .step.active, .step.done { color:#fff; } .step.active i { background:var(--gold); color:#5c3500; box-shadow:0 0 16px rgba(255,200,75,.65); } .step.done i { background:var(--mint); color:#073629; }
+    .game-shell { display:grid; grid-template-columns:minmax(0,1fr) 285px; gap:18px; }
+    .panel { border:1px solid var(--line); border-radius:22px; background:var(--card); box-shadow:0 12px 30px rgba(0,0,0,.18); }
+    .game-panel { padding:clamp(20px,4vw,34px); }
+    .side-panel { padding:18px; }
+    .stage-tag { display:inline-block; color:#08213f; background:var(--mint); padding:5px 10px; border-radius:999px; font-size:.78rem; font-weight:900; }
+    h2 { margin:12px 0 9px; font-size:clamp(1.5rem,3vw,2rem); }
+    .lead { color:#c9e9fb; line-height:1.75; margin:0 0 20px; }
+    .lesson { display:flex; gap:12px; margin:0 0 21px; padding:13px 15px; border-radius:14px; background:rgba(111,204,232,.11); border-left:4px solid var(--ice); color:#def5ff; line-height:1.55; }
+    .lesson b { color:#fff; white-space:nowrap; }
+    .options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .choice { position:relative; cursor:pointer; min-height:124px; padding:16px; border:1px solid rgba(196,237,255,.22); border-radius:16px; background:linear-gradient(150deg,rgba(44,89,138,.62),rgba(11,35,73,.94)); transition:.2s ease; user-select:none; }
+    .choice:hover { transform:translateY(-3px); border-color:rgba(255,207,77,.78); }
+    .choice.selected { border:2px solid var(--gold); background:linear-gradient(145deg,rgba(125,89,47,.75),rgba(28,46,76,.98)); box-shadow:0 0 0 3px rgba(255,205,75,.12); }
+    .choice input { position:absolute; opacity:0; }
+    .choice .icon { font-size:1.75rem; }
+    .choice strong { display:block; margin:6px 0 2px; font-size:1rem; }
+    .choice small { color:#b8dcf0; line-height:1.35; }
+    .cost { position:absolute; right:12px; top:12px; color:#ffe98a; font-weight:900; }
+    .status-line { display:flex; justify-content:space-between; gap:12px; margin:17px 0; color:#d8effb; font-weight:700; }
+    .status-line b { color:var(--gold); }
+    .bar { height:11px; overflow:hidden; border-radius:999px; background:#072040; border:1px solid rgba(182,231,255,.16); } .bar span { display:block; height:100%; width:0; background:linear-gradient(90deg,var(--gold),#fff29e); transition:width .3s; }
+    .actions { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:19px; }
+    .button { appearance:none; border:0; border-radius:12px; padding:12px 18px; cursor:pointer; background:linear-gradient(135deg,#ffe382,#ed9d1a); color:#4b2c00; font-weight:900; box-shadow:0 5px 0 #9d5706,0 9px 20px rgba(0,0,0,.25); transition:.16s; }
+    .button:hover { transform:translateY(-2px); } .button:active { transform:translateY(3px); box-shadow:0 2px 0 #9d5706; } .button[disabled] { opacity:.45; cursor:not-allowed; transform:none; }
+    .feedback { min-height:1.4em; font-weight:700; color:#fff; } .feedback.good { color:#9ff2ca; } .feedback.bad { color:#ffc4bb; }
+    .key-card { padding:17px; margin-bottom:13px; border:1px solid rgba(255,202,78,.33); border-radius:16px; background:linear-gradient(145deg,rgba(96,68,27,.67),rgba(19,40,73,.89)); text-align:center; }
+    .key { display:block; font-size:2.4rem; margin-bottom:4px; filter:grayscale(1) opacity(.5); } .key-card.unlocked .key { filter:none; animation:float 1.8s ease-in-out infinite; } .key-card b { display:block; } .key-card small { color:#b7d7e9; }
+    .side-title { color:#aee9ff; font-size:.83rem; font-weight:900; letter-spacing:.11em; }
+    .tip { margin-top:15px; padding:14px; border-radius:14px; background:rgba(3,18,40,.55); color:#cdeafa; font-size:.9rem; line-height:1.65; }
+    .tip strong { color:var(--gold); }
+    .hidden { display:none !important; }
+    .allocation { display:grid; gap:13px; margin:18px 0; }
+    .range-row { display:grid; grid-template-columns:136px 1fr 58px; align-items:center; gap:12px; padding:13px; border-radius:14px; background:rgba(45,88,134,.34); }
+    .range-row label { font-weight:800; } .range-row small { display:block; color:#b7d9ef; font-weight:500; } .range-row output { color:#ffdf72; font-size:1.1rem; font-weight:900; text-align:right; }
+    input[type=range] { width:100%; accent-color:var(--gold); }
+    .result { text-align:center; padding:28px 12px 8px; }
+    .result .trophy { font-size:4.5rem; filter:drop-shadow(0 0 18px rgba(255,205,75,.55)); } .result h2 { margin:7px 0; } .result p { max-width:620px; margin:0 auto 18px; color:#d4eefb; line-height:1.7; }
+    .achievement { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; max-width:660px; margin:20px auto; }
+    .achievement div { padding:14px 10px; border:1px solid var(--line); border-radius:14px; background:rgba(43,91,139,.33); } .achievement span { display:block; font-size:1.6rem; } .achievement b { display:block; margin-top:4px; color:#fff; font-size:.87rem; }
+    .restart { background:transparent; border:1px solid var(--line); color:#e7f7ff; box-shadow:none; }
+    footer { padding:24px 0 0; color:#9bc2d9; text-align:center; font-size:.82rem; }
+    @media (max-width:780px) { .scene { min-height:560px; } .intro { top:38px; left:25px; width:calc(100% - 50px); } .banner { left:auto; right:20px; top:260px; transform:scale(.8); transform-origin:top right; } model-viewer { right:0; width:100%; height:310px; bottom:-22px; } .game-shell { grid-template-columns:1fr; } .side-panel { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; } .side-title,.tip { grid-column:span 2; margin-top:0; } .key-card { margin:0; } }
+    @media (max-width:520px) { .app { width:min(100% - 20px,1180px); padding-top:12px; } .topbar { align-items:flex-start; flex-direction:column; } .scoreboard { justify-content:flex-start; } .scene { min-height:535px; border-radius:20px; } h1 { font-size:2.35rem; } .intro p { font-size:.92rem; max-width:290px; } .progress { padding:10px; } .step { font-size:.72rem; } .step i { width:24px; height:24px; flex-basis:24px; } .options { grid-template-columns:1fr; } .range-row { grid-template-columns:105px 1fr 49px; gap:7px; padding:10px; font-size:.86rem; } .achievement { grid-template-columns:1fr; } .side-panel { grid-template-columns:1fr; } .side-title,.tip { grid-column:auto; } }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><span class="coin">￥</span> 小小金錢獸</div>
+      <div class="scoreboard"><div class="stat">目前總分<strong id="totalScore">0 / 100</strong></div><div class="stat">取得鑰匙<strong id="keyCount">0 / 2</strong></div></div>
+    </header>
+
+    <section class="scene" aria-label="冬日金幣競技場">
+      <div class="banner"><small>財富魔法競技場</small><span>小小</span><span>金錢獸</span></div>
+      <div class="intro"><div class="eyebrow">MONEY MAGIC QUEST</div><h1>把金幣，變成好選擇！</h1><p>陪金錢獸穿越冰晶競技場。每解開一個生活理財任務，就能得到一把魔法鑰匙。</p><div class="mission-pill">✦ 任務目標：蒐集 2 把鑰匙，開啟理財寶庫</div></div>
+      <model-viewer src="assets/money-beast.glb" alt="原創的紫色小小金錢獸 3D 模型" auto-rotate camera-controls disable-zoom shadow-intensity="1" exposure="1.1" camera-orbit="15deg 75deg 4.4m" camera-target="0m 0.7m 1.25m"></model-viewer>
+      <span class="key-float" id="floatingKey">🔑</span>
+    </section>
+
+    <section class="progress" aria-label="闖關進度">
+      <div class="step active" id="step1"><i>1</i><span>零用錢森林<br>分清需要與想要</span></div>
+      <div class="step" id="step2"><i>2</i><span>投資雲谷<br>學會風險分散</span></div>
+      <div class="step" id="step3"><i>★</i><span>理財寶庫<br>查看學習成果</span></div>
+    </section>
+
+    <section class="game-shell">
+      <section class="panel game-panel">
+        <div id="level1">
+          <span class="stage-tag">第一關 · 零用錢森林</span>
+          <h2>背包裡該放什麼？</h2>
+          <p class="lead">金錢獸獲得了 <b>100 金幣</b>。請挑選一個不超支的計畫，讓牠先照顧需要、也留下一點儲蓄。</p>
+          <div class="lesson"><b>理財小魔法</b><span>先處理「需要」和儲蓄，再決定「想要」能花多少。這樣遇到突發狀況才更安心。</span></div>
+          <div class="options" id="budgetChoices">
+            <label class="choice"><input type="radio" name="budget" value="a"><span class="icon">📚</span><strong>安心背包</strong><small>課本 35＋儲蓄 25＋點心 15＋想要的貼紙 10</small><span class="cost">85 金幣</span></label>
+            <label class="choice"><input type="radio" name="budget" value="b"><span class="icon">🎮</span><strong>衝動購物車</strong><small>遊戲卡 70＋點心 30＋儲蓄 0</small><span class="cost">100 金幣</span></label>
+            <label class="choice"><input type="radio" name="budget" value="c"><span class="icon">🛴</span><strong>超支快車</strong><small>遙控車 80＋課本 35＋儲蓄 10</small><span class="cost">125 金幣</span></label>
+            <label class="choice"><input type="radio" name="budget" value="d"><span class="icon">🍭</span><strong>甜蜜空背包</strong><small>糖果 45＋玩具 45＋儲蓄 10</small><span class="cost">100 金幣</span></label>
+          </div>
+          <div class="actions"><button class="button" id="checkBudget">確認我的選擇</button><span class="feedback" id="budgetFeedback" role="status"></span></div>
+        </div>
+
+        <div id="level2" class="hidden">
+          <span class="stage-tag">第二關 · 投資雲谷</span>
+          <h2>讓金幣走穩一點</h2>
+          <p class="lead">你有 <b>100 金幣</b>可以安排。報酬較高的地方，可能波動也較大。請配置一個有安全基礎、又不把全部金幣放在同一處的計畫。</p>
+          <div class="lesson"><b>投資小魔法</b><span>分散配置不是保證賺錢，但能讓風險不要全壓在同一個地方。生活緊急用的錢，要留在安全的地方。</span></div>
+          <div class="allocation">
+            <div class="range-row"><label for="safe">守護金庫 <small>安全、報酬較低</small></label><input id="safe" type="range" min="0" max="100" step="10" value="50"><output id="safeOut">50</output></div>
+            <div class="range-row"><label for="farm">綠芽農場 <small>有機會成長</small></label><input id="farm" type="range" min="0" max="100" step="10" value="30"><output id="farmOut">30</output></div>
+            <div class="range-row"><label for="comet">流星探險 <small>高風險、高波動</small></label><input id="comet" type="range" min="0" max="100" step="10" value="20"><output id="cometOut">20</output></div>
+          </div>
+          <div class="status-line"><span>已分配 <b id="allocated">100</b> / 100 金幣</span><span id="planHint">把金幣分配完畢吧！</span></div>
+          <div class="bar"><span id="allocationBar"></span></div>
+          <div class="actions"><button class="button" id="checkInvestment">啟動雲谷計畫</button><span class="feedback" id="investmentFeedback" role="status"></span></div>
+        </div>
+
+        <div id="result" class="hidden result">
+          <div class="trophy">🏆</div><span class="stage-tag">任務完成</span><h2>理財寶庫已開啟！</h2>
+          <p id="resultText"></p>
+          <div class="achievement"><div><span>🧺</span><b>先分清需要與想要</b></div><div><span>🪙</span><b>知道儲蓄能帶來安心</b></div><div><span>🧭</span><b>理解分散能管理風險</b></div></div>
+          <div class="actions" style="justify-content:center"><button class="button restart" id="restart">再玩一次</button></div>
+        </div>
+      </section>
+
+      <aside class="panel side-panel">
+        <div class="side-title">魔法鑰匙收藏</div>
+        <div class="key-card" id="key1"><span class="key">🔑</span><b>零用錢鑰匙</b><small>完成「安心背包」</small></div>
+        <div class="key-card" id="key2"><span class="key">🔑</span><b>投資雲谷鑰匙</b><small>完成分散配置</small></div>
+        <div class="tip"><strong>給小小冒險家：</strong><br>理財不是要把錢都藏起來，而是知道每一枚金幣可以怎麼幫助現在與未來的自己。</div>
+      </aside>
+    </section>
+    <footer>小小金錢獸｜生活理財投資互動學習遊戲 · 原創角色模型以 Blender 製作</footer>
+  </main>
+  <script>
+    const state = { level: 1, score1: 0, score2: 0, keys: 0 };
+    const $ = (selector) => document.querySelector(selector);
+    const choices = [...document.querySelectorAll('.choice')];
+    const score = () => state.score1 + state.score2;
+    const refreshScore = () => { $('#totalScore').textContent = `${score()} / 100`; $('#keyCount').textContent = `${state.keys} / 2`; };
+    const setStep = (number) => { [1,2,3].forEach(n => { const el = $(`#step${n}`); el.classList.toggle('active',n===number); el.classList.toggle('done',n<number); }); };
+    const unlock = (number) => { const card = $(`#key${number}`); card.classList.add('unlocked'); $('#floatingKey').style.display = 'block'; setTimeout(()=> $('#floatingKey').style.display = 'none', 1700); };
+
+    choices.forEach(choice => choice.addEventListener('click', () => { choices.forEach(c => c.classList.remove('selected')); choice.classList.add('selected'); $('#budgetFeedback').textContent = ''; $('#budgetFeedback').className = 'feedback'; }));
+    $('#checkBudget').addEventListener('click', () => {
+      const selected = document.querySelector('input[name="budget"]:checked'); const feedback = $('#budgetFeedback');
+      if (!selected) { feedback.textContent = '先選一個金幣安排吧！'; feedback.className = 'feedback bad'; return; }
+      if (selected.value !== 'a') { feedback.textContent = selected.value === 'c' ? '這個計畫超過 100 金幣了，先調整再出發！' : '再看看：計畫裡是否有「需要」和儲蓄呢？'; feedback.className = 'feedback bad'; return; }
+      state.score1 = 50; state.keys = Math.max(state.keys,1); refreshScore(); unlock(1); feedback.textContent = '太棒了！你先照顧需要，也保留了 25 金幣儲蓄。取得第一把鑰匙！'; feedback.className = 'feedback good'; $('#checkBudget').disabled = true;
+      setTimeout(() => { $('#level1').classList.add('hidden'); $('#level2').classList.remove('hidden'); state.level = 2; setStep(2); }, 1250);
+    });
+
+    const ranges = ['safe','farm','comet'].map(id => $("#" + id));
+    const updateAllocation = () => { const values = ranges.map(range => Number(range.value)); ['safe','farm','comet'].forEach((id,i)=> $(`#${id}Out`).textContent=values[i]); const total=values.reduce((a,b)=>a+b,0); $('#allocated').textContent=total; $('#allocationBar').style.width=Math.min(total,100)+'%'; const hint=$('#planHint'); hint.textContent = total === 100 ? '剛好分配完成！' : total > 100 ? `超出 ${total-100} 金幣` : `還有 ${100-total} 金幣尚未安排`; hint.style.color = total === 100 ? '#9ff2ca' : total > 100 ? '#ffc4bb' : '#d8effb'; };
+    ranges.forEach(range => range.addEventListener('input', updateAllocation)); updateAllocation();
+    $('#checkInvestment').addEventListener('click', () => {
+      const safe=Number($('#safe').value), farm=Number($('#farm').value), comet=Number($('#comet').value), total=safe+farm+comet, feedback=$('#investmentFeedback');
+      if(total!==100) { feedback.textContent='請先把 100 金幣全部安排好。'; feedback.className='feedback bad'; return; }
+      const used = [safe,farm,comet].filter(v=>v>0).length;
+      if(safe<40 || used<2 || comet>40) { feedback.textContent = safe<40 ? '先留至少 40 金幣在守護金庫，生活才有安全墊。' : comet>40 ? '流星探險的波動很大，試著別把太多金幣放在這裡。' : '至少選擇兩個地方，練習分散安排。'; feedback.className='feedback bad'; return; }
+      state.score2=50; state.keys=2; refreshScore(); unlock(2); feedback.textContent='好配置！你保留了安全金庫，也沒有把金幣全放在同一個風險裡。'; feedback.className='feedback good'; $('#checkInvestment').disabled=true;
+      setTimeout(() => { $('#level2').classList.add('hidden'); $('#result').classList.remove('hidden'); setStep(3); $('#resultText').textContent=`你成功蒐集兩把鑰匙，得到 ${score()} 分！你已經能先安排生活需要與儲蓄，也知道投資時要留安全空間並分散風險。`; },1300);
+    });
+    $('#restart').addEventListener('click', () => { state.level=1; state.score1=0; state.score2=0; state.keys=0; refreshScore(); setStep(1); $('#level1').classList.remove('hidden'); $('#level2').classList.add('hidden'); $('#result').classList.add('hidden'); $('#key1').classList.remove('unlocked'); $('#key2').classList.remove('unlocked'); $('#checkBudget').disabled=false; $('#checkInvestment').disabled=false; choices.forEach(c=>c.classList.remove('selected')); document.querySelectorAll('input[name="budget"]').forEach(i=>i.checked=false); $('#budgetFeedback').textContent=''; $('#investmentFeedback').textContent=''; [['safe',50],['farm',30],['comet',20]].forEach(([id,v])=>$('#'+id).value=v); updateAllocation(); window.scrollTo({top:0,behavior:'smooth'}); });
+  </script>
+</body>
+</html>
