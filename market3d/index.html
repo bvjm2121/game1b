@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>小小金錢獸｜雪山雙攤市集</title><link rel="stylesheet" href="game.css"></head><body><main>
+<header><div><span class="sigil">✦</span> 小小金錢獸</div><output id="score">0 分　·　鑰匙 0 / 2</output></header>
+<section class="stage" aria-label="可探索的三維雪山市集"><canvas id="world" tabindex="0" aria-label="使用 WASD 移動，空白鍵跳躍，Enter 造訪攤位"></canvas>
+<div class="mission"><span id="chapter">第一關　／　雪地市集</span><h1 id="objective">尋找旅行補給攤</h1><small id="distance"></small></div>
+<div id="marker" aria-hidden="true">◆　旅行補給攤</div><div id="loading" role="status">正在打開市集大門…</div>
+<div class="actionbar"><button id="visit" disabled>Enter　造訪攤位</button></div>
+<div class="touch"><div class="pad"><button data-code="KeyW" aria-label="往前">▲</button><button data-code="KeyA" aria-label="往左">◀</button><button data-code="KeyS" aria-label="往後">▼</button><button data-code="KeyD" aria-label="往右">▶</button></div><button data-code="Space">跳躍</button></div>
+</section><footer><div class="skins" aria-label="選擇世界風格"><button data-skin="Night" aria-pressed="true">雪夜燈火</button><button data-skin="Day" aria-pressed="false">晴空競技場</button><button data-skin="Felt" aria-pressed="false">微縮雪村</button></div><small>WASD 移動　·　空白鍵跳躍　·　Enter 造訪</small></footer>
+<dialog id="shop"><div class="ledger"><div class="eyeline"><span id="shopname"></span><button id="leave">返回市集　×</button></div><h2 id="question"></h2><p id="story"></p><div id="answers"></div><p id="feedback" role="status"></p><button id="confirm" class="primary"></button></div></dialog>
+</main><script src="vendor/three.min.js"></script><script src="vendor/GLTFLoader.js"></script><script src="market.js"></script></body></html>

@@ -1,0 +1,10 @@
+config_version=5
+[application]
+config/name="小小金錢獸・雪山雙攤市集"
+run/main_scene="res://Square.tscn"
+[display]
+window/size/viewport_width=1100
+window/size/viewport_height=700
+window/stretch/mode="canvas_items"
+[rendering]
+renderer/rendering_method="gl_compatibility"
