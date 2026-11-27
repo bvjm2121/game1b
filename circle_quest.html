@@ -13,5 +13,24 @@ const qs=[
 ['半徑 10 公分、圓心角 270° 的扇形，周長是多少？',67.1,sector(270,10),'10 × 2 × 3.14 × 270 ÷ 360 + 10 × 2 = 67.1','270° 是四分之三圓，別漏掉兩條半徑。'],
 ['跑道兩端是直徑 8 公分的半圓，中間兩條直線各長 12 公分。外圍周長是多少？',49.12,shape('M100 70 H220 A50 50 0 0 1 220 170 H100 A50 50 0 0 1 100 70 Z')+line(100,70,100,170)+line(220,70,220,170)+txt(160,58,'12 公分')+txt(126,125,'8 公分'),'8 × 3.14 + 12 × 2 = 49.12','兩個半圓弧合成一個完整圓周；虛線是內部線段，不計入周長。'],
 ['正方形邊長 10 公分，右上角挖去半徑 5 公分的四分之一圓（圓心在原右上角）。剩餘圖形周長是多少？',37.85,shape('M70 40 H160 A90 90 0 0 0 250 130 V220 H70 Z')+line(160,40,250,40)+line(250,40,250,130)+txt(115,30,'5 公分')+txt(204,30,'5 公分')+txt(160,241,'10 公分')+txt(42,135,'10')+txt(278,180,'5'),'10 × 2 + 5 × 2 + 5 × 2 × 3.14 ÷ 4 = 37.85','外圍包含兩條完整邊、兩條剩下的短邊及四分之一圓弧；挖掉的虛線不算。']];
+
+const key='circleQuestLastSetV1';
+const fixed=[10,7,10,10,8,12,15,10,8,12,10,5];
+const pools=[[6,8,10,12,14,16,18,20],[4,5,6,7,8,9,10,12],[5,6,8,10,12,15,20],[4,6,8,10,12,14,16],[4,6,8,10,12,14,16],[3,6,9,12,15,18,21],[3,6,9,12,15,18,21],[4,6,8,10,12,14,16],[4,6,8,10,12,14],[8,10,12,14,16,18],[8,10,12,14,16,18,20],[2,3,4,5,6,7]];
+let prev=null;try{prev=JSON.parse(localStorage.getItem(key))}catch(e){}
+if(prev && (!Array.isArray(prev)||prev.length!==fixed.length))prev=null;
+let vals=prev?pools.map((p,j)=>{let a=p.filter(x=>x!==prev[j]);return a[Math.floor(Math.random()*a.length)]}):fixed.slice();
+if(prev){vals[11]=vals[10]/2;}
+try{localStorage.setItem(key,JSON.stringify(vals))}catch(e){}
+const round=n=>Math.round(n*100)/100;
+let [d,r,rr,h,a,b,c,e,w,l,s,t]=vals;
+function setQ(j,question,answer,diagram,formula){qs[j]=[question,round(answer),diagram,formula+' = '+round(answer),qs[j][4]]}
+setQ(0,'直徑是 '+d+' 公分的圓，圓周長是多少？',d*3.14,circle(d+' 公分',true),d+' × 3.14');
+setQ(1,'半徑是 '+r+' 公分的圓，圓周長是多少？',r*6.28,circle(r+' 公分',false),r+' × 2 × 3.14');
+setQ(2,'圓周長是 '+round(rr*6.28)+' 公分，半徑是多少？',rr,circle('？公分',false)+txt(160,235,'圓周長 '+round(rr*6.28)+' 公分'),round(rr*6.28)+' ÷ 3.14 ÷ 2');
+[[3,h,180],[4,a,90],[5,b,60],[6,c,120],[7,e,270]].forEach(([j,n,angle])=>setQ(j,j===3?'半徑是 '+n+' 公分的半圓形，周長是多少？':'半徑 '+n+' 公分、圓心角 '+angle+'° 的扇形，周長是多少？',n*6.28*angle/360+2*n,sector(angle,n),n+' × 2 × 3.14 × '+angle+' ÷ 360 + '+n+' × 2'));
+setQ(8,'跑道兩端是直徑 '+w+' 公分的半圓，中間兩條直線各長 '+l+' 公分。外圍周長是多少？',w*3.14+2*l,shape('M100 70 H220 A50 50 0 0 1 220 170 H100 A50 50 0 0 1 100 70 Z')+line(100,70,100,170)+line(220,70,220,170)+txt(160,58,l+' 公分')+txt(126,125,w+' 公分'),w+' × 3.14 + '+l+' × 2');
+setQ(9,'正方形邊長 '+s+' 公分，右上角挖去半徑 '+t+' 公分的四分之一圓（圓心在原右上角）。剩餘圖形周長是多少？',2*s+2*(s-t)+t*6.28/4,shape('M70 40 H160 A90 90 0 0 0 250 130 V220 H70 Z')+line(160,40,250,40)+line(250,40,250,130)+txt(115,30,(s-t)+' 公分')+txt(204,30,t+' 公分')+txt(160,241,s+' 公分')+txt(42,135,s)+txt(278,180,s-t),s+' × 2 + '+(s-t)+' × 2 + '+t+' × 2 × 3.14 ÷ 4');
+
 let i=0,correct=0,history=[];const $=id=>document.getElementById(id);function render(){let q=qs[i];$('level').textContent=`第 ${i+1} / 10 關`; $('score').textContent=`答對 ${correct} 題`; $('fill').style.width=i*10+'%';document.querySelector('.track').setAttribute('aria-valuenow',i);$('question').textContent=q[0];$('diagram').innerHTML=q[2];$('diagram').setAttribute('aria-label',q[0]);$('answer').value='';$('answer').disabled=false;$('submit').disabled=false;$('feedback').hidden=true;$('next').hidden=true;}
 $('form').addEventListener('submit',e=>{e.preventDefault();if($('submit').disabled)return;let q=qs[i],v=Number($('answer').value),ok=Math.abs(v-q[1])<0.000001;history.push({v,ok});if(ok)correct++;$('score').textContent=`答對 ${correct} 題`;$('fill').style.width=(i+1)*10+'%';document.querySelector('.track').setAttribute('aria-valuenow',i+1);$('feedback').innerHTML=`<strong class="${ok?'good':'bad'}">${ok?'✓ 答對了！':'再看看解題方法！'}</strong><div>你的答案：${v} 公分</div><div><b>正確答案：${q[1]} 公分</b></div><div>算式：${q[3]}</div><div>觀念：${q[4]}</div>`;$('feedback').hidden=false;$('answer').disabled=true;$('submit').disabled=true;$('next').hidden=false;$('next').textContent=i===9?'查看闖關成果':'前往下一關 →';$('next').focus()});$('next').onclick=()=>{if(i<9){i++;render();$('answer').focus();return} $('panel').innerHTML=`<h2>🏆 闖關完成！</h2><h1>${correct*10} 分</h1><p>共答對 ${correct} / 10 題。${correct===10?'太棒了，全部答對！':'每一次訂正都是進步！'}</p><h3>作答紀錄</h3><ol>${history.map((h,j)=>`<li><b class="${h.ok?'good':'bad'}">${h.ok?'✓':'✗'} 第 ${j+1} 關</b><br>${qs[j][0]}<br>你的答案：${h.v}；正解：${qs[j][1]}<br><small>${qs[j][3]}</small></li>`).join('')}</ol><button onclick="location.reload()">重新挑戰</button>`};render();</script></html>
